@@ -8,8 +8,9 @@ from {{ ref('stg_jaffleshop__orders') }}
 payments as (
     select
         order_id,
-        amount
+        amount/100 as amount
 from {{ ref('stg_stripe__payments') }}
+where status = 'success'
 ),
 
 final as (
