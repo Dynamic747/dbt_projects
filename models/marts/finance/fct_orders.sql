@@ -17,7 +17,7 @@ final as (
     select
         orders.order_id,
         orders.customer_id,
-        payments.amount
+        coalesce(payments.amount,0) as amount
 from orders
 left join payments
 on orders.order_id = payments.order_id

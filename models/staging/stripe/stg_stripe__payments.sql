@@ -4,5 +4,6 @@ select
     paymentmethod as payment_method,
     status,
     amount,
-    created
+    created,
+    _batched_at
 from raw.stripe.payment
