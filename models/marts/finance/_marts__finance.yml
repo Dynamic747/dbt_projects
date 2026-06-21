@@ -1,0 +1,22 @@
+models:
+  - name: fct_orders
+    description: One row per order, with aggregated payment amounts.
+    columns:
+      - name: order_id
+        data_tests:
+          - unique
+          - not_null
+      - name: customer_id
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_id
+
+  - name: dim_customers
+    description: One row per customer, with order history attributes.
+    columns:
+      - name: customer_id
+        data_tests:
+          - unique
+          - not_null
