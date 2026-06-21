@@ -1,0 +1,33 @@
+#includes all tests, descriptions of payments columns
+
+models:
+  - name: stg_stripe__payments
+    description: Staged payment data from the stripe platform
+    columns:
+      - name: id
+        description: primary key of the payments data
+        data_tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: order identifier for the payments data
+        data_tests:
+          - not_null
+      - name: payment_method
+        description: what method of payment did the user use
+        data_tests:
+          - accepted_values:
+              arguments: 
+                values:
+                  - 'credit_card'
+                  - 'coupon'
+                  - 'bank_transfer'
+                  - 'gift_card'
+      - name: order_status
+        description: has the order been accepted or rejected
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - 'success'
+                  - 'fail'

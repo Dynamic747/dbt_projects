@@ -1,3 +1,5 @@
+#yml file for source layer
+
 sources:
   - name: jaffle_shop
     database: raw
